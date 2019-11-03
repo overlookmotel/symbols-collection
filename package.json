@@ -13,26 +13,29 @@
   "bugs": {
     "url": "https://github.com/overlookmotel/symbols-collection/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "is-it-type": "^1.0.0"
+  },
   "devDependencies": {
-    "@overlookmotel/eslint-config": "^4.3.2",
-    "@overlookmotel/eslint-config-jest": "^2.1.0",
-    "coveralls": "^3.0.6",
+    "@overlookmotel/eslint-config": "^5.0.1",
+    "@overlookmotel/eslint-config-jest": "^3.0.1",
+    "coveralls": "^3.0.7",
     "cross-env": "^6.0.3",
-    "eslint": "^6.5.1",
+    "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-eslint-comments": "^3.1.2",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^22.17.0",
+    "eslint-plugin-jest": "^23.0.2",
     "eslint-plugin-node": "^10.0.0",
-    "jest": "^24.9.0"
+    "jest": "^24.9.0",
+    "jest-extended": "^0.11.2"
   },
   "keywords": [
-	"symbol",
-	"symbols",
-	"object",
-	"collection",
-	"namespace"
+    "symbol",
+    "symbols",
+    "object",
+    "collection",
+    "namespace"
   ],
   "scripts": {
     "test": "npm run lint && npm run test-main",

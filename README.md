@@ -9,7 +9,33 @@
 
 ## Usage
 
-This module is under development and not ready for use yet.
+Create a collection of symbols named with common namespace. The symbol descriptions simplify debugging.
+
+```js
+const makeSymbols = require('symbols-collection');
+
+const symbols = makeSymbols(
+  'my-module',
+  ['FOO', 'BAR', 'QUX']
+);
+```
+
+...is just a shortcut for:
+
+```js
+const symbols = {
+  FOO: Symbol('my-module.FOO'),
+  BAR: Symbol('my-module.BAR'),
+  QUX: Symbol('my-module.QUX')
+};
+```
+
+So then you can:
+
+```js
+const {FOO} = symbols;
+const obj = { [FOO]: true };
+```
 
 ## Tests
 
