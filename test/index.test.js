@@ -67,5 +67,11 @@ describe('throws error if', () => {
 				symbolsCollection('foo', ['BAR', 123]);
 			}).toThrowWithMessage(TypeError, 'names must be an array of strings');
 		});
+
+		it('contains a non-capitalized string', () => {
+			expect(() => {
+				symbolsCollection('foo', ['BAR', 'Qux']);
+			}).toThrowWithMessage(Error, 'symbol names must be all capitalized');
+		});
 	});
 });
