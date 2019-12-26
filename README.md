@@ -5,7 +5,7 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/overlookmotel/symbols-collection.svg)](https://greenkeeper.io/)
 [![Coverage Status](https://img.shields.io/coveralls/overlookmotel/symbols-collection/master.svg)](https://coveralls.io/r/overlookmotel/symbols-collection)
 
-# Create a collection of symbols with namespaced names
+# Create a collection of Symbols with namespaced names
 
 ## Usage
 

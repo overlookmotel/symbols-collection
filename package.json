@@ -1,7 +1,7 @@
 {
   "name": "symbols-collection",
   "version": "1.0.0",
-  "description": "Create a collection of symbols with namespaced labels",
+  "description": "Create a collection of Symbols with namespaced labels",
   "main": "index.js",
   "author": {
     "name": "Overlook Motel"
