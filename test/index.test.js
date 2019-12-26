@@ -74,4 +74,12 @@ describe('throws error if', () => {
 			}).toThrowWithMessage(Error, 'symbol names must be all capitalized');
 		});
 	});
+
+	describe('options', () => {
+		it('is not an object', () => {
+			expect(() => {
+				symbolsCollection('foo', ['BAR'], 123);
+			}).toThrowWithMessage(TypeError, 'options must be an object if provided');
+		});
+	});
 });
