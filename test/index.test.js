@@ -6,31 +6,31 @@
 'use strict';
 
 // Modules
-const symbolsCollection = require('../index');
+const makeSymbols = require('../index');
 
 // Tests
 
 it('exports a function', () => {
-	expect(symbolsCollection).toBeFunction();
+	expect(makeSymbols).toBeFunction();
 });
 
 it('returns an object', () => {
-	const symbols = symbolsCollection('foo', ['BAR']);
+	const symbols = makeSymbols('foo', ['BAR']);
 	expect(symbols).toBeObject();
 });
 
 it('creates named keys', () => {
-	const symbols = symbolsCollection('foo', ['BAR', 'QUX']);
+	const symbols = makeSymbols('foo', ['BAR', 'QUX']);
 	expect(symbols).toContainAllKeys(['BAR', 'QUX']);
 });
 
 it('creates symbols', () => {
-	const symbols = symbolsCollection('foo', ['BAR']);
+	const symbols = makeSymbols('foo', ['BAR']);
 	expect(typeof symbols.BAR).toBe('symbol');
 });
 
 it('symbols named with namespace', () => {
-	const symbols = symbolsCollection('foo', ['BAR']);
+	const symbols = makeSymbols('foo', ['BAR']);
 	expect(String(symbols.BAR)).toBe('Symbol(foo.BAR)');
 });
 
@@ -38,13 +38,13 @@ describe('throws error if', () => {
 	describe('namespace', () => {
 		it('not provided', () => {
 			expect(() => {
-				symbolsCollection(null, ['BAR']);
+				makeSymbols(null, ['BAR']);
 			}).toThrowWithMessage(TypeError, 'namespace must be a string');
 		});
 
 		it('is not a string', () => {
 			expect(() => {
-				symbolsCollection(123, ['BAR']);
+				makeSymbols(123, ['BAR']);
 			}).toThrowWithMessage(TypeError, 'namespace must be a string');
 		});
 	});
@@ -52,25 +52,25 @@ describe('throws error if', () => {
 	describe('names', () => {
 		it('not provided', () => {
 			expect(() => {
-				symbolsCollection('foo');
+				makeSymbols('foo');
 			}).toThrowWithMessage(TypeError, 'names must be an array of strings');
 		});
 
 		it('not an array', () => {
 			expect(() => {
-				symbolsCollection('foo', 123);
+				makeSymbols('foo', 123);
 			}).toThrowWithMessage(TypeError, 'names must be an array of strings');
 		});
 
 		it('contains a non-string', () => {
 			expect(() => {
-				symbolsCollection('foo', ['BAR', 123]);
+				makeSymbols('foo', ['BAR', 123]);
 			}).toThrowWithMessage(TypeError, 'names must be an array of strings');
 		});
 
 		it('contains a non-capitalized string', () => {
 			expect(() => {
-				symbolsCollection('foo', ['BAR', 'Qux']);
+				makeSymbols('foo', ['BAR', 'Qux']);
 			}).toThrowWithMessage(Error, 'symbol names must be all capitalized');
 		});
 	});
@@ -78,7 +78,7 @@ describe('throws error if', () => {
 	describe('options', () => {
 		it('is not an object', () => {
 			expect(() => {
-				symbolsCollection('foo', ['BAR'], 123);
+				makeSymbols('foo', ['BAR'], 123);
 			}).toThrowWithMessage(TypeError, 'options must be an object if provided');
 		});
 	});
