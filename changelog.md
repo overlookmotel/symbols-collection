@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.1.1
+
+Dependencies:
+
+* Update `is-it-type` dependency
+
+Dev:
+
+* Update ESLint config
+
 ## 1.1.0
 
 Features:
