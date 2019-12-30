@@ -59,6 +59,24 @@ describe('store option', () => {
 		expect(symbols.BAR).toBe(symbol);
 	});
 
+	it('returns object which is not reference to store', () => {
+		const store = {};
+		const symbols = makeSymbols('foo', ['BAR'], {store});
+		expect(symbols).toBeObject();
+		expect(store.foo).toBeObject();
+		expect(symbols).not.toBe(store.foo);
+
+		symbols.QUX = 123;
+		expect(store.foo.QUX).toBeUndefined();
+	});
+
+	it('does not return other existing symbols in store', () => {
+		const symbol = Symbol('foo.BAR'),
+			store = {foo: {BAR: symbol}};
+		const symbols = makeSymbols('foo', ['QUX'], {store});
+		expect(symbols).toContainAllKeys(['QUX']);
+	});
+
 	describe('throws error if', () => {
 		it('store is not an object', () => {
 			expect(() => {
