@@ -73,6 +73,12 @@ describe('throws error if', () => {
 				makeSymbols('foo', ['BAR', 'Qux']);
 			}).toThrowWithMessage(Error, 'symbol names must be all capitalized');
 		});
+
+		it('contains duplicates', () => {
+			expect(() => {
+				makeSymbols('foo', ['BAR', 'QUX', 'BAR']);
+			}).toThrowWithMessage(Error, "symbol names must be unique - 'BAR' was duplicated");
+		});
 	});
 
 	describe('options', () => {
