@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.1.2
+
+Bug fixes:
+
+* Return object independent of store
+* Throw error if duplicate names
+
+Dev:
+
+* Update dev dependencies
+
 ## 1.1.1
 
 Dependencies:
