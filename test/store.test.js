@@ -28,8 +28,9 @@ describe('store option', () => {
 
 	it('adds symbol to store where namespace not already existing', () => {
 		const store = {};
-		makeSymbols('foo', ['BAR'], {store});
+		const symbols = makeSymbols('foo', ['BAR'], {store});
 		expect(typeof store.foo.BAR).toBe('symbol');
+		expect(store.foo.BAR).toBe(symbols.BAR);
 	});
 
 	it('does not overwrite existing store namespace', () => {
@@ -41,8 +42,9 @@ describe('store option', () => {
 
 	it('adds symbol to existing store namespace', () => {
 		const store = {foo: {}};
-		makeSymbols('foo', ['BAR'], {store});
+		const symbols = makeSymbols('foo', ['BAR'], {store});
 		expect(typeof store.foo.BAR).toBe('symbol');
+		expect(store.foo.BAR).toBe(symbols.BAR);
 	});
 
 	it('does not overwrite existing stored symbol', () => {
@@ -53,10 +55,10 @@ describe('store option', () => {
 	});
 
 	it('returns existing stored symbol', () => {
-		const symbol = Symbol('foo.BAR'),
-			store = {foo: {BAR: symbol}};
-		const symbols = makeSymbols('foo', ['BAR'], {store});
-		expect(symbols.BAR).toBe(symbol);
+		const store = {};
+		const symbols1 = makeSymbols('foo', ['BAR'], {store});
+		const symbols2 = makeSymbols('foo', ['BAR'], {store});
+		expect(symbols2.BAR).toBe(symbols1.BAR);
 	});
 
 	it('returns object which is not reference to store', () => {
