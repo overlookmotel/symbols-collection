@@ -47,6 +47,12 @@ describe('throws error if', () => {
 				makeSymbols(123, ['BAR']);
 			}).toThrowWithMessage(TypeError, 'namespace must be a string');
 		});
+
+		it('is empty string', () => {
+			expect(() => {
+				makeSymbols('', ['BAR']);
+			}).toThrowWithMessage(TypeError, 'namespace must be a string');
+		});
 	});
 
 	describe('names', () => {
@@ -65,6 +71,12 @@ describe('throws error if', () => {
 		it('contains a non-string', () => {
 			expect(() => {
 				makeSymbols('foo', ['BAR', 123]);
+			}).toThrowWithMessage(TypeError, 'names must be an array of strings');
+		});
+
+		it('contains empty string', () => {
+			expect(() => {
+				makeSymbols('foo', ['BAR', '']);
 			}).toThrowWithMessage(TypeError, 'names must be an array of strings');
 		});
 
