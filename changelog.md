@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.2.0
+
+Features:
+
+* Namespace is optional
+
+Tests:
+
+* Tests for errors on empty strings
+* Tighten up store tests
+
 ## 1.1.2
 
 Bug fixes:
