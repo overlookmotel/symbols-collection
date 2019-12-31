@@ -34,6 +34,16 @@ const symbols = {
 };
 ```
 
+### Without namespace
+
+Providing a namespace is optional. If no namespace is provided, symbol descriptions are same as symbol names.
+
+```js
+const symbols = makeSymbols( ['FOO', 'BAR'] );
+symbols.FOO // => Symbol(FOO)
+symbols.BAR // => Symbol(BAR)
+```
+
 ### Symbol store
 
 You can cache all Symbols by passing a `store` option. `store` should be a plain object.

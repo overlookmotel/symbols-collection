@@ -14,34 +14,52 @@ it('exports a function', () => {
 	expect(makeSymbols).toBeFunction();
 });
 
-it('returns an object', () => {
-	const symbols = makeSymbols('foo', ['BAR']);
-	expect(symbols).toBeObject();
+describe('with namespace', () => {
+	it('returns an object', () => {
+		const symbols = makeSymbols('foo', ['BAR']);
+		expect(symbols).toBeObject();
+	});
+
+	it('creates named keys', () => {
+		const symbols = makeSymbols('foo', ['BAR', 'QUX']);
+		expect(symbols).toContainAllKeys(['BAR', 'QUX']);
+	});
+
+	it('creates symbols', () => {
+		const symbols = makeSymbols('foo', ['BAR']);
+		expect(typeof symbols.BAR).toBe('symbol');
+	});
+
+	it('symbol description is namespace and name', () => {
+		const symbols = makeSymbols('foo', ['BAR']);
+		expect(String(symbols.BAR)).toBe('Symbol(foo.BAR)');
+	});
 });
 
-it('creates named keys', () => {
-	const symbols = makeSymbols('foo', ['BAR', 'QUX']);
-	expect(symbols).toContainAllKeys(['BAR', 'QUX']);
-});
+describe('without namespace', () => {
+	it('returns an object', () => {
+		const symbols = makeSymbols(['BAR']);
+		expect(symbols).toBeObject();
+	});
 
-it('creates symbols', () => {
-	const symbols = makeSymbols('foo', ['BAR']);
-	expect(typeof symbols.BAR).toBe('symbol');
-});
+	it('creates named keys', () => {
+		const symbols = makeSymbols(['BAR', 'QUX']);
+		expect(symbols).toContainAllKeys(['BAR', 'QUX']);
+	});
 
-it('symbols named with namespace', () => {
-	const symbols = makeSymbols('foo', ['BAR']);
-	expect(String(symbols.BAR)).toBe('Symbol(foo.BAR)');
+	it('creates symbols', () => {
+		const symbols = makeSymbols(['BAR']);
+		expect(typeof symbols.BAR).toBe('symbol');
+	});
+
+	it('symbol description is name', () => {
+		const symbols = makeSymbols(['BAR']);
+		expect(String(symbols.BAR)).toBe('Symbol(BAR)');
+	});
 });
 
 describe('throws error if', () => {
 	describe('namespace', () => {
-		it('not provided', () => {
-			expect(() => {
-				makeSymbols(null, ['BAR']);
-			}).toThrowWithMessage(TypeError, 'namespace must be a string');
-		});
-
 		it('is not a string', () => {
 			expect(() => {
 				makeSymbols(123, ['BAR']);

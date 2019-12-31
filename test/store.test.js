@@ -78,6 +78,12 @@ describe('store option', () => {
 	});
 
 	describe('throws error if', () => {
+		it('namespace not provided', () => {
+			expect(() => {
+				makeSymbols(['BAR'], {store: {}});
+			}).toThrowWithMessage(Error, 'options.store cannot be used without namespace');
+		});
+
 		it('store is not an object', () => {
 			expect(() => {
 				makeSymbols('foo', ['BAR'], {store: 123});
