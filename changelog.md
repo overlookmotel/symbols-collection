@@ -1,5 +1,27 @@
 # Changelog
 
+## 2.0.0
+
+Breaking changes:
+
+* Drop support for Node v8
+
+Dependencies:
+
+* Update `is-it-type` dependency
+
+Dev:
+
+* Remove `sudo` key from Travis CI config
+* Update dev dependencies
+* ESLint ignore coverage dir
+* Run tests on CI on Node v13
+
+Docs:
+
+* Versioning policy
+* Update license year
+
 ## 1.2.0
 
 Features:
