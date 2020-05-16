@@ -1,5 +1,39 @@
 # Changelog
 
+## 2.0.1
+
+Bug fixes:
+
+* Better enforce symbol naming
+
+Refactor:
+
+* Import file extensions
+
+Deps:
+
+* Update `is-it-type` dependency
+
+No code:
+
+* Code comments on config files
+
+Tests:
+
+* Import module by name [refactor]
+* Run tests in dev mode
+
+Dev:
+
+* Replace `.npmignore` with `files` list in `package.json`
+* Run tests on CI on Node v14
+* Update dev dependencies
+* `.editorconfig` config
+* ESLint process all dot files
+* Remove `npm-debug.log` from `.gitignore`
+* Simplify Jest config
+* Simplify lint scripts
+
 ## 2.0.0
 
 Breaking changes:
