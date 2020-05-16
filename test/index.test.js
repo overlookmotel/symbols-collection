@@ -6,7 +6,7 @@
 'use strict';
 
 // Modules
-const makeSymbols = require('../index.js');
+const makeSymbols = require('symbols-collection');
 
 // Tests
 
