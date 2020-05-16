@@ -44,6 +44,10 @@ symbols.FOO // => Symbol(FOO)
 symbols.BAR // => Symbol(BAR)
 ```
 
+### Naming
+
+Names must only contain upper case letters (`A-Z`), digits (`0-9`), `_` or `$`. They must be valid JS identifiers (i.e. not start with a digit).
+
 ### Symbol store
 
 You can cache all Symbols by passing a `store` option. `store` should be a plain object.

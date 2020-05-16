@@ -95,13 +95,21 @@ describe('throws error if', () => {
 		it('contains empty string', () => {
 			expect(() => {
 				makeSymbols('foo', ['BAR', '']);
-			}).toThrowWithMessage(TypeError, 'names must be an array of strings');
+			}).toThrowWithMessage(Error, "'' is not a valid symbol name - must be in SNAKE_CASE and a valid JS identifier");
 		});
 
-		it('contains a non-capitalized string', () => {
-			expect(() => {
-				makeSymbols('foo', ['BAR', 'Qux']);
-			}).toThrowWithMessage(Error, 'symbol names must be all capitalized');
+		describe('contains invalid string', () => {
+			it.each([
+				'qux',
+				'QUx',
+				'Q.UX',
+				'Q-UX',
+				'1QUX'
+			])('%s', (name) => {
+				expect(() => {
+					makeSymbols('foo', ['BAR', name]);
+				}).toThrowWithMessage(Error, `'${name}' is not a valid symbol name - must be in SNAKE_CASE and a valid JS identifier`);
+			});
 		});
 
 		it('contains duplicates', () => {
