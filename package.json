@@ -43,8 +43,8 @@
   ],
   "scripts": {
     "test": "npm run lint && npm run test-main",
-    "lint": "eslint '*.js' '.*.js' '**/*.js' '**/.*.js'",
-    "lint-fix": "eslint '*.js' '.*.js' '**/*.js' '**/.*.js' --fix",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
     "test-main": "cross-env jest",
     "cover": "npm run cover-main && rm -rf coverage",
     "coveralls": "npm run cover-main && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
