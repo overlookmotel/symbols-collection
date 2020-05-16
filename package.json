@@ -3,6 +3,9 @@
   "version": "2.0.0",
   "description": "Create a collection of Symbols with namespaced labels",
   "main": "index.js",
+  "files": [
+    "lib/**/*.js"
+  ],
   "author": {
     "name": "Overlook Motel"
   },
